@@ -12,9 +12,9 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //Define Routes
-// app.use('/api/users', require('./routes/users'));
-// app.use('/api/auth', require('./routes/auth'));
-// app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/tasks', require('./routes/tasks'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   );
 }
+
 
 const PORT = process.env.PORT || 5000;
 
