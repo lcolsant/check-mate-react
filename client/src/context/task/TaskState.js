@@ -28,6 +28,7 @@ const TaskState = (props) => {
       },
     ],
     current: null,
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(taskReducer, initialState);
@@ -50,7 +51,7 @@ const TaskState = (props) => {
 
   //clear current task
   const clearCurrent = () => {
-    dispatch({ type: SET_CURRENT });
+    dispatch({ type: CLEAR_CURRENT });
   };
 
   //update task
@@ -59,19 +60,28 @@ const TaskState = (props) => {
   };
 
   //filter tasks
+  const filterTasks = (text) => {
+    dispatch({ type: FILTER_TASKS, payload: text });
+  };
 
   //clear filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <TaskContext.Provider
       value={{
         tasks: state.tasks,
         current: state.current,
+        filtered: state.filtered,
         addTask,
         deleteTask,
         setCurrent,
         clearCurrent,
         updateTask,
+        filterTasks,
+        clearFilter,
       }}
     >
       {props.children}

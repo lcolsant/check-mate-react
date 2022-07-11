@@ -38,6 +38,20 @@ export default (state, action) => {
           task.id === action.payload.id ? action.payload : task
         ),
       };
+    case FILTER_TASKS:
+      return {
+        ...state,
+        filtered: state.tasks.filter((task) => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return task.description.match(regex) || task.completed.match(regex);
+        }),
+      };
+
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
+      };
     default:
       return state;
   }

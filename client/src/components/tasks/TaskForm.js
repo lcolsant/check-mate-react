@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import TaskContext from '../../context/task/taskContext';
-import { UPDATE_TASK } from '../../context/types';
 
 const TaskForm = () => {
   const taskContext = useContext(TaskContext);
