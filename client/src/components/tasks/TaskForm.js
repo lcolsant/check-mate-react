@@ -47,9 +47,7 @@ const TaskForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">
-        {current ? 'Update Task' : 'Update Task'}
-      </h2>
+      <h2 className="text-primary">{current ? 'Update Task' : 'Add Task'}</h2>
       <input
         type="text"
         placeholder="task"
@@ -67,7 +65,7 @@ const TaskForm = () => {
       <div>
         <input
           type="submit"
-          value={current ? 'Update Task' : 'Update Task'}
+          value={current ? 'Update Task' : 'Add Task'}
           className="btn btn-primary btn-block"
         />
       </div>
