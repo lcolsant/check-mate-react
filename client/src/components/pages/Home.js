@@ -8,8 +8,8 @@ const Home = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
-    authContext.loadUser();
-
+    const token = localStorage.getItem('token');
+    authContext.loadUser(token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
