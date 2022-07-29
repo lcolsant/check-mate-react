@@ -19,6 +19,7 @@ const authReducer = (state, action) => {
         user: action.payload,
       };
     case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         ...action.payload,
@@ -27,6 +28,9 @@ const authReducer = (state, action) => {
       };
     case REGISTER_FAIL:
     case AUTH_ERROR:
+    case LOGIN_FAIL:
+    case LOGOUT:
+      console.log('logging out');
       localStorage.removeItem('token');
 
       return {

@@ -20,10 +20,10 @@ router.get('/', auth, async (req, res) => {
 });
 
 // @route     POST api/auth
-// @desc      Login a user
-// @access    Private
+// @desc      Login: Auth user & get token
+// @access    Public
 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -36,7 +36,7 @@ router.post('/', auth, async (req, res) => {
     const result = await bcrypt.compare(password, user.password);
 
     if (!result) {
-      return res.status(400).json('err: Passwords do not match.');
+      return res.status(400).json('msg: Invalid Credentials');
     }
 
     const payload = {
